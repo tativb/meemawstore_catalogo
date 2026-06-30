@@ -8,7 +8,7 @@ const produtos = [
     material: "PLA",
     cores: ["Rosa", "Vermelho", "Branco"],
     descricao: "Chaveiro compacto em formato de coração, leve e resistente.",
-    imagem: "imgs/placeholder/placeholder.jpg"
+    imagens: ["imgs/placeholder/placeholder.jpg"]
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const produtos = [
     material: "PLA",
     cores: ["Preto", "Azul"],
     descricao: "Chaveiro funcional com spinner embutido, ótimo para ansiedade.",
-    imagem: "imgs/placeholder/placeholder.jpg"
+    imagens: ["imgs/placeholder/placeholder.jpg", "imgs/placeholder/placeholder.jpg", "imgs/placeholder/placeholder.jpg"]
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const produtos = [
     material: "PLA",
     cores: ["Preto", "Branco"],
     descricao: "Suporte de mesa para pendurar fone de ouvido. Elegante e prático.",
-    imagem: "imgs/placeholder/placeholder.jpg"
+    imagens: ["imgs/placeholder/placeholder.jpg"]
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ const produtos = [
     material: "PLA",
     cores: ["Lilás", "Verde", "Laranja"],
     descricao: "Anel com aro giratório, perfeito para momentos de concentração.",
-    imagem: "imgs/placeholder/placeholder.jpg"
+    imagens: ["imgs/placeholder/placeholder.jpg"]
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ const produtos = [
     material: "PLA",
     cores: ["Amarelo", "Rosa", "Azul"],
     descricao: "Mini suporte para bilhetes e post-its na sua mesa.",
-    imagem: "imgs/placeholder/placeholder.jpg"
+    imagens: ["imgs/placeholder/placeholder.jpg"]
   },
   {
     id: 6,
@@ -63,6 +63,6 @@ const produtos = [
     material: "PLA",
     cores: ["Todas as cores"],
     descricao: "Chaveiro com inicial em relevo. Informe a letra desejada no pedido.",
-    imagem: "imgs/placeholder/placeholder.jpg"
+    imagens: ["imgs/placeholder/placeholder.jpg"]
   }
 ];

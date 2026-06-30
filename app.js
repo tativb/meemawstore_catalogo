@@ -50,9 +50,20 @@ function renderCatalogo() {
   filtrados.forEach(p => {
     const card = document.createElement("div");
     card.className = "card";
+    card.dataset.imgIndex = "0";
+
+    const temMultiplas = p.imagens.length > 1;
+
     card.innerHTML = `
       <div class="card-img">
-        <img src="${p.imagem}" alt="${p.nome}" onerror="this.src='imgs/placeholder/placeholder.jpg'">
+        <img src="${p.imagens[0]}" alt="${p.nome}" onerror="this.src='imgs/placeholder/placeholder.jpg'">
+        ${temMultiplas ? `
+          <button class="carrossel-btn prev" aria-label="Foto anterior">‹</button>
+          <button class="carrossel-btn next" aria-label="Próxima foto">›</button>
+          <div class="carrossel-dots">
+            ${p.imagens.map((_, i) => `<span class="dot${i === 0 ? " ativo" : ""}"></span>`).join("")}
+          </div>
+        ` : ""}
       </div>
       <div class="card-body">
         <span class="categoria">${p.categoria}</span>
@@ -60,7 +71,7 @@ function renderCatalogo() {
         <p class="descricao">${p.descricao}</p>
         <div class="card-footer">
           <span class="preco">R$ ${p.preco.toFixed(2).replace(".", ",")}</span>
-          <a class="btn-interesse" href="https://wa.me/5512981196260?text=Olá! Tenho interesse na peça: ${encodeURIComponent(p.nome)}" target="_blank">
+          <a class="btn-interesse" href="https://wa.me/551281196260?text=Olá! Tenho interesse na peça: ${encodeURIComponent(p.nome)}" target="_blank">
             Tenho interesse
           </a>
         </div>
@@ -69,6 +80,29 @@ function renderCatalogo() {
         </div>
       </div>
     `;
+
+    if (temMultiplas) {
+      const img = card.querySelector("img");
+      const dots = card.querySelectorAll(".dot");
+
+      const mostrarImagem = (index) => {
+        const total = p.imagens.length;
+        const novoIndex = (index + total) % total;
+        card.dataset.imgIndex = novoIndex;
+        img.src = p.imagens[novoIndex];
+        dots.forEach((d, i) => d.classList.toggle("ativo", i === novoIndex));
+      };
+
+      card.querySelector(".prev").addEventListener("click", (e) => {
+        e.stopPropagation();
+        mostrarImagem(parseInt(card.dataset.imgIndex) - 1);
+      });
+      card.querySelector(".next").addEventListener("click", (e) => {
+        e.stopPropagation();
+        mostrarImagem(parseInt(card.dataset.imgIndex) + 1);
+      });
+    }
+
     grid.appendChild(card);
   });
 }
