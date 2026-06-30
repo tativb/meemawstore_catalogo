@@ -60,7 +60,7 @@ function renderCatalogo() {
         <p class="descricao">${p.descricao}</p>
         <div class="card-footer">
           <span class="preco">R$ ${p.preco.toFixed(2).replace(".", ",")}</span>
-          <a class="btn-interesse" href="https://wa.me/5500000000000?text=Olá! Tenho interesse na peça: ${encodeURIComponent(p.nome)}" target="_blank">
+          <a class="btn-interesse" href="https://wa.me/5512981196260?text=Olá! Tenho interesse na peça: ${encodeURIComponent(p.nome)}" target="_blank">
             Tenho interesse
           </a>
         </div>
