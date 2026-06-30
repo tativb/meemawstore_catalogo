@@ -1,14 +1,14 @@
 const produtos = [
   {
     id: 1,
-    nome: "Chaveiro Coração",
-    preco: 8.00,
-    categoria: "Chaveiros",
-    tags: ["chaveiros", "até 10 reais", "presente"],
+    nome: "Suporte para Jogos de Cartas",
+    preco: 40.00,
+    categoria: "Utilidades",
+    tags: ["utilidades", "até 40 reais", "presente"],
     material: "PLA",
-    cores: ["Rosa", "Vermelho", "Branco"],
-    descricao: "Chaveiro compacto em formato de coração, leve e resistente.",
-    imagens: ["imgs/placeholder/placeholder.jpg"]
+    cores: ["Lavanda", "Vermelho", "Branco", "Preto", "Azul", "Cinza", "outras cores"],
+    descricao: "Suporte para jogos de cartas, leve e resistente.",
+    imagens: ["imgs/suporteJogoCartas/sjc_1.jpg", "imgs/suporteJogoCartas/sjc_2.jpg","imgs/suporteJogoCartas/sjc_3.jpg","imgs/suporteJogoCartas/sjc_4.jpg"]
   },
   {
     id: 2,
