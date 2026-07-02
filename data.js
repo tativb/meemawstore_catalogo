@@ -185,5 +185,16 @@ const produtos = [
     cores: ["Diversas cores disponíveis"],
     descricao: "Porta óculos em formato de gatinho. Fofinho e funcional para sua mesa.",
     imagens: ["imgs/utilidades/PortaOculosGatinho.jpg"]
+  },
+  {
+    id: 18,
+    nome: "Porta canetas Engrenagem",
+    preco: 39.99,
+    categoria: "Escritório",
+    tags: ["Escritório", "até 40 reais", "Presentes"],
+    material: "PLA",
+    cores: ["Diversas cores disponíveis"],
+    descricao: "Porta canetas em formato de engrenagem móvel. Perfeito para presentear.",
+    imagens: ["imgs/Escritorio/PortaCanetasEngrenagens.jpg"]
   }
 ];
