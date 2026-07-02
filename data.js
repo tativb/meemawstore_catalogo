@@ -107,7 +107,7 @@ const produtos = [
     material: "PLA",
     cores: ["Diversas cores disponíveis"],
     descricao: "Kit com 6 porta copos com estampa de Sakurá. Delicado e elegante.",
-    imagens: ["imgs/utilidades/portaCoposSakura.jpg"]
+    imagens: ["imgs/utilidades/portaCoposSakura_1.jpg", "imgs/utilidades/portaCoposSakura_2.jpg", "imgs/utilidades/portaCoposSakura_3.jpg"]
   },
   {
     id: 11,
@@ -118,7 +118,7 @@ const produtos = [
     material: "PLA",
     cores: ["Diversas cores disponíveis"],
     descricao: "Porta foto em formato de tulipa. Perfeito para guardar memórias especiais.",
-    imagens: ["imgs/utilidades/portaFotoTulipa_1.jpg", "imgs/utilidades/portaFotoTulipa_2.jpg", "imgs/utilidades/portaFotoTulipa_3.jpg", "imgs/utilidades/portaFotoTulipa_4.jpg", "imgs/utilidades/portaFotoTulipa_5.jpg", "imgs/utilidades/portaFotoTulipa_6.jpg", ]
+    imagens: ["imgs/utilidades/portaFotosTulipa_1.jpg", "imgs/utilidades/portaFotosTulipa_2.jpg", "imgs/utilidades/portaFotosTulipa_3.jpg", "imgs/utilidades/portaFotosTulipa_4.jpg", "imgs/utilidades/portaFotosTulipa_5.jpg", "imgs/utilidades/portaFotosTulipa_6.jpg", ]
   },
   {
     id: 12,
@@ -129,7 +129,7 @@ const produtos = [
     material: "PLA",
     cores: ["Diversas cores disponíveis"],
     descricao: "Vaso elegante com 15cm de altura, design sofisticado para qualquer ambiente.",
-    imagens: ["imgs/utilidades/vasoElegante15cm.jpg"]
+    imagens: ["imgs/utilidades/VasoElegante15cm.jpg"]
   },
   {
     id: 13,
@@ -162,7 +162,7 @@ const produtos = [
     material: "PLA",
     cores: ["Diversas cores disponíveis"],
     descricao: "Imagem de Nossa Senhora Aparecida com 7cm. Delicada e cheia de fé.",
-    imagens: ["imgs/religiosos/NossaSenhoraAparecida7cm.jpg"]
+    imagens: ["imgs/religiosos/NossaSenhoraAparecida7cm_1.jpg", "imgs/religiosos/NossaSenhoraAparecida7cm_2.jpg"]
   },
   {
     id: 16,
@@ -173,7 +173,7 @@ const produtos = [
     material: "PLA",
     cores: ["Marrom com branco"],
     descricao: "Chaveiro com a palavra Fé em relevo. Singelo e cheio de significado.",
-    imagens: ["imgs/chaveiros/ChaveiroFe.jpg"]
+    imagens: ["imgs/chaveiros/ChaveiroFe.jpeg"]
   },
   {
     id: 17,
@@ -184,7 +184,7 @@ const produtos = [
     material: "PLA",
     cores: ["Diversas cores disponíveis"],
     descricao: "Porta óculos em formato de gatinho. Fofinho e funcional para sua mesa.",
-    imagens: ["imgs/utilidades/PortaOculosGatinho.jpg"]
+    imagens: ["imgs/utilidades/PortaOculosGatinho_1.jpg", "imgs/utilidades/PortaOculosGatinho_2.jpg"]
   },
   {
     id: 18,
