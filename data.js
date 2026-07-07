@@ -107,7 +107,7 @@ const produtos = [
     material: "PLA",
     cores: ["Diversas cores disponíveis"],
     descricao: "Kit com 6 porta copos com estampa de Sakurá. Delicado e elegante.",
-    imagens: ["imgs/utilidades/portaCoposSakura_1.jpg", "imgs/utilidades/portaCoposSakura_2.jpg", "imgs/utilidades/portaCoposSakura_3.jpg"]
+    imagens: ["imgs/utilidades/PortaCoposSakura_1.jpg", "imgs/utilidades/PortaCoposSakura_2.jpg", "imgs/utilidades/PortaCoposSakura_3.jpg"]
   },
   {
     id: 11,
@@ -118,7 +118,7 @@ const produtos = [
     material: "PLA",
     cores: ["Diversas cores disponíveis"],
     descricao: "Porta foto em formato de tulipa. Perfeito para guardar memórias especiais.",
-    imagens: ["imgs/utilidades/portaFotosTulipa_1.jpg", "imgs/utilidades/portaFotosTulipa_2.jpg", "imgs/utilidades/portaFotosTulipa_3.jpg", "imgs/utilidades/portaFotosTulipa_4.jpg", "imgs/utilidades/portaFotosTulipa_5.jpg", "imgs/utilidades/portaFotosTulipa_6.jpg", ]
+    imagens: ["imgs/utilidades/PortaFotosTulipa_1.jpg", "imgs/utilidades/PortaFotosTulipa_2.jpg", "imgs/utilidades/PortaFotosTulipa_3.jpg", "imgs/utilidades/PortaFotosTulipa_4.jpg", "imgs/utilidades/PortaFotosTulipa_5.jpg", "imgs/utilidades/PortaFotosTulipa_6.jpg", ]
   },
   {
     id: 12,
