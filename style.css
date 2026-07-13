@@ -95,19 +95,31 @@ main {
   margin: 0 -24px;
 }
 
-.filtros-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-  margin-bottom: 10px;
-}
-
 #filtros {
   display: flex;
   flex-wrap: wrap;
+  gap: 16px 32px;
+  align-items: flex-start;
+}
+
+.filtro-secao {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
+}
+
+.filtro-secao-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+.filtro-grupo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .btn-filtro {

@@ -1,46 +1,90 @@
 const state = {
-  filtroAtivo: "todos"
+  categoria: "todas",
+  preco: "todos"
 };
 
-function todasAsTags() {
-  const tags = new Set();
-  produtos.forEach(p => p.tags.forEach(t => tags.add(t)));
-  return Array.from(tags).sort();
+const faixasPreco = [
+  { label: "Até R$ 15",     valor: "ate15",   fn: p => p.preco <= 15 },
+  { label: "Até R$ 30",     valor: "ate30",   fn: p => p.preco <= 30 },
+  { label: "Até R$ 50",     valor: "ate50",   fn: p => p.preco <= 50 },
+  { label: "Acima de R$ 50",valor: "acima50", fn: p => p.preco > 50 }
+];
+
+function todasAsCategorias() {
+  const cats = new Set(produtos.map(p => p.categoria));
+  return Array.from(cats).sort();
 }
 
 function renderFiltros() {
   const container = document.getElementById("filtros");
-  const tags = todasAsTags();
+  container.innerHTML = "";
 
-  const btnTodos = criarBtnFiltro("Todos", "todos");
-  container.appendChild(btnTodos);
+  // ── Seção Categorias ──
+  const secCat = document.createElement("div");
+  secCat.className = "filtro-secao";
+  secCat.innerHTML = `<span class="filtro-secao-label">Categoria</span>`;
 
-  tags.forEach(tag => {
-    container.appendChild(criarBtnFiltro(capitalizar(tag), tag));
+  const grupoCat = document.createElement("div");
+  grupoCat.className = "filtro-grupo";
+
+  [{ label: "Todas", valor: "todas" }, ...todasAsCategorias().map(c => ({ label: c, valor: c }))]
+    .forEach(({ label, valor }) => {
+      const btn = criarBtn(label, valor, "categoria");
+      grupoCat.appendChild(btn);
+    });
+
+  secCat.appendChild(grupoCat);
+  container.appendChild(secCat);
+
+  // ── Seção Preço ──
+  const secPreco = document.createElement("div");
+  secPreco.className = "filtro-secao";
+  secPreco.innerHTML = `<span class="filtro-secao-label">Preço</span>`;
+
+  const grupoPreco = document.createElement("div");
+  grupoPreco.className = "filtro-grupo";
+
+  const btnTodosPreco = criarBtn("Todos", "todos", "preco");
+  grupoPreco.appendChild(btnTodosPreco);
+
+  faixasPreco.forEach(({ label, valor }) => {
+    grupoPreco.appendChild(criarBtn(label, valor, "preco"));
   });
+
+  secPreco.appendChild(grupoPreco);
+  container.appendChild(secPreco);
 }
 
-function criarBtnFiltro(label, valor) {
+function criarBtn(label, valor, tipo) {
   const btn = document.createElement("button");
   btn.textContent = label;
-  btn.className = "btn-filtro" + (valor === state.filtroAtivo ? " ativo" : "");
-  btn.dataset.filtro = valor;
+  btn.className = "btn-filtro" + (state[tipo] === valor ? " ativo" : "");
+  btn.dataset.valor = valor;
+  btn.dataset.tipo = tipo;
   btn.addEventListener("click", () => {
-    state.filtroAtivo = valor;
-    document.querySelectorAll(".btn-filtro").forEach(b => b.classList.remove("ativo"));
+    state[tipo] = valor;
+    document.querySelectorAll(`.btn-filtro[data-tipo="${tipo}"]`)
+      .forEach(b => b.classList.remove("ativo"));
     btn.classList.add("ativo");
     renderCatalogo();
   });
   return btn;
 }
 
+function produtosFiltrados() {
+  return produtos.filter(p => {
+    const passaCat = state.categoria === "todas" || p.categoria === state.categoria;
+    const faixa = faixasPreco.find(f => f.valor === state.preco);
+    const passaPreco = !faixa || faixa.fn(p);
+    return passaCat && passaPreco;
+  });
+}
+
 function renderCatalogo() {
   const grid = document.getElementById("catalogo");
   grid.innerHTML = "";
 
-  const filtrados = state.filtroAtivo === "todos"
-    ? produtos
-    : produtos.filter(p => p.tags.includes(state.filtroAtivo));
+  const filtrados = produtosFiltrados();
 
   if (filtrados.length === 0) {
     grid.innerHTML = `<p class="vazio">Nenhuma peça encontrada com esse filtro.</p>`;
