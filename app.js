@@ -71,7 +71,7 @@ function renderCatalogo() {
         <p class="descricao">${p.descricao}</p>
         <div class="card-footer">
           <span class="preco">R$ ${p.preco.toFixed(2).replace(".", ",")}</span>
-          <a class="btn-interesse" href="https://wa.me/551281196260?text=Olá! Tenho interesse na peça: ${encodeURIComponent(p.nome)}" target="_blank">
+          <a class="btn-interesse" href="https://wa.me/5500000000000?text=Olá! Tenho interesse na peça: ${encodeURIComponent(p.nome)}" target="_blank">
             Tenho interesse
           </a>
         </div>
@@ -81,15 +81,16 @@ function renderCatalogo() {
       </div>
     `;
 
+    const imgEl = card.querySelector("img");
+
     if (temMultiplas) {
-      const img = card.querySelector("img");
       const dots = card.querySelectorAll(".dot");
 
       const mostrarImagem = (index) => {
         const total = p.imagens.length;
         const novoIndex = (index + total) % total;
         card.dataset.imgIndex = novoIndex;
-        img.src = p.imagens[novoIndex];
+        imgEl.src = p.imagens[novoIndex];
         dots.forEach((d, i) => d.classList.toggle("ativo", i === novoIndex));
       };
 
@@ -102,6 +103,11 @@ function renderCatalogo() {
         mostrarImagem(parseInt(card.dataset.imgIndex) + 1);
       });
     }
+
+    // Abre modal ao clicar na foto
+    imgEl.addEventListener("click", () => {
+      abrirModal(p.imagens, parseInt(card.dataset.imgIndex) || 0);
+    });
 
     grid.appendChild(card);
   });
@@ -123,6 +129,69 @@ function renderBusca() {
 function capitalizar(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+// ── Modal ──
+const modal = document.createElement("div");
+modal.id = "modal";
+modal.innerHTML = `
+  <div class="modal-overlay"></div>
+  <div class="modal-box">
+    <button class="modal-fechar" aria-label="Fechar">✕</button>
+    <button class="modal-nav prev" aria-label="Foto anterior">‹</button>
+    <img class="modal-img" src="" alt="" />
+    <button class="modal-nav next" aria-label="Próxima foto">›</button>
+    <div class="modal-dots"></div>
+    <div class="modal-counter"></div>
+  </div>
+`;
+document.body.appendChild(modal);
+
+const modalState = { imagens: [], index: 0 };
+
+function abrirModal(imagens, index) {
+  modalState.imagens = imagens;
+  modalState.index = index;
+  atualizarModal();
+  modal.classList.add("ativo");
+  document.body.style.overflow = "hidden";
+}
+
+function fecharModal() {
+  modal.classList.remove("ativo");
+  document.body.style.overflow = "";
+}
+
+function atualizarModal() {
+  const { imagens, index } = modalState;
+  modal.querySelector(".modal-img").src = imagens[index];
+  modal.querySelector(".modal-counter").textContent = imagens.length > 1
+    ? `${index + 1} / ${imagens.length}` : "";
+
+  const dotsEl = modal.querySelector(".modal-dots");
+  dotsEl.innerHTML = imagens.length > 1
+    ? imagens.map((_, i) => `<span class="dot${i === index ? " ativo" : ""}"></span>`).join("") : "";
+
+  modal.querySelector(".modal-nav.prev").style.display = imagens.length > 1 ? "" : "none";
+  modal.querySelector(".modal-nav.next").style.display = imagens.length > 1 ? "" : "none";
+}
+
+function navModal(dir) {
+  const total = modalState.imagens.length;
+  modalState.index = (modalState.index + dir + total) % total;
+  atualizarModal();
+}
+
+modal.querySelector(".modal-fechar").addEventListener("click", fecharModal);
+modal.querySelector(".modal-overlay").addEventListener("click", fecharModal);
+modal.querySelector(".modal-nav.prev").addEventListener("click", () => navModal(-1));
+modal.querySelector(".modal-nav.next").addEventListener("click", () => navModal(1));
+
+document.addEventListener("keydown", (e) => {
+  if (!modal.classList.contains("ativo")) return;
+  if (e.key === "Escape") fecharModal();
+  if (e.key === "ArrowLeft") navModal(-1);
+  if (e.key === "ArrowRight") navModal(1);
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   renderFiltros();
