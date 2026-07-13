@@ -9,7 +9,7 @@
   --border: #E4E1DC;
   --radius: 12px;
   --font-display: 'Syne', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'Baloo 2', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
