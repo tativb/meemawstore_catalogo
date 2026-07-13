@@ -85,6 +85,16 @@ main {
 }
 
 /* ── Filtros ── */
+.filtros-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  margin: 0 -24px;
+}
+
 .filtros-label {
   font-size: 0.75rem;
   font-weight: 600;
@@ -98,7 +108,6 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 32px;
 }
 
 .btn-filtro {
@@ -421,9 +430,5 @@ footer {
 
   main {
     padding: 20px 16px;
-  }
-
-  a.logo {
-  text-decoration: none;
   }
 }
