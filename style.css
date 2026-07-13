@@ -443,4 +443,8 @@ footer {
   main {
     padding: 20px 16px;
   }
+
+  a.logo {
+  text-decoration: none;
+  }
 }
